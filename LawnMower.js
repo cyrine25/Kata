@@ -1,4 +1,4 @@
-const MoveForward = (currentPosition) => {
+const movingForward = (currentPosition) => {
     let xPosition = Number(currentPosition[0])
     let yPosition = Number(currentPosition[1])
     let orientation = currentPosition[2]
@@ -31,7 +31,7 @@ const prevIndex = (currentIndex, length) => {
     const prev = (currentIndex - 1 + length) % length
     return orientationArr[prev]
 }
-const checkPosition = (initialPosition, maxPosition) => {
+const checkingPosition = (initialPosition, maxPosition) => {
     let currentXPosition = initialPosition[0]
     let currentYPosition = initialPosition[1]
     
@@ -40,7 +40,7 @@ const checkPosition = (initialPosition, maxPosition) => {
 const movingPosition = (movingSequence, initialPosition,maxPosition) => {
     let currentPosition = [...initialPosition]
     let movingSequenceArr = movingSequence.split('')
-    if (!checkPosition(initialPosition,maxPosition)) {
+    if (!checkingPosition(initialPosition,maxPosition)) {
         return 'initial position is out of area'
      }
         movingSequenceArr.forEach((instruction) => {
@@ -55,7 +55,7 @@ const movingPosition = (movingSequence, initialPosition,maxPosition) => {
                 currentPosition = [...currentPosition.slice(0, 2), newOrientation]
             }
             if (instruction === 'A') {
-                currentPosition = MoveForward(currentPosition)
+                currentPosition = movingForward(currentPosition)
             }
         })
     
